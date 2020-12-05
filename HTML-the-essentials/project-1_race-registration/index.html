@@ -10,7 +10,7 @@
 
     4) password input
 
-    5) age select dropdown
+    5) age select dropdown, min 3 types
 -->
 <!DOCTYPE html>
 <html lang="en">
@@ -42,6 +42,15 @@
             <input type="email" name="email" id="email" required>
             <label for="password">Password:</label>
             <input type="password" name="password" id="password" required>
+        </p>
+        <p>
+            <label for="age">Select Age Group:</label>
+            <select name="age" id="age">
+                <option value="kids">Under 12</option>
+                <option value="teen">Under 18</option>
+                <option value="young">18 - 40</option>
+                <option value="old">40+</option>
+            </select>
         </p>
         <button>Register</button>
     </form>
