@@ -1,3 +1,11 @@
 h2 {
-    color: indigo;
+    color: teal;
+}
+
+button {
+    color: magenta;
+}
+
+p {
+    color: olive;
 }
