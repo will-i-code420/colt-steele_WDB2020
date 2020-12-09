@@ -3,6 +3,7 @@ h1 {
     font-weight: normal; /* or font-weight: 400; */
     text-decoration: #f78120 underline wavy;
     letter-spacing: 15px;
+    font-size: 80px;
 }
 
 a {
