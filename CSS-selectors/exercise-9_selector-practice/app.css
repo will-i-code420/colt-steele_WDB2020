@@ -4,5 +4,9 @@
     1) all li elements blue text
     2) all elements with class of don grey text
     3) element with ID clear a red background w/ white text
-    
+
 */
+
+li {
+    color: blue;
+}
