@@ -3,3 +3,9 @@
 * {
     background-color: cyan;
 }
+
+/* HTML Element Selector */
+
+button {
+    font-size: 30px;
+}
