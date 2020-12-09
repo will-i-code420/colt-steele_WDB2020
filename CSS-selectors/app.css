@@ -22,3 +22,10 @@ button {
 h1, h2 {
     color: #1d3557;
 }
+
+/* ID Selector */
+
+#signup {
+    background-color: #1d3557;
+    color: #f1faee;
+}
