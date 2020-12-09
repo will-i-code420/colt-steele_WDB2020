@@ -8,3 +8,8 @@
     6) set letter spacing to 20px
     7) add a wavy plum underline
 */
+
+h1 {
+    text-transform: uppercase;
+    font-family: monospace;
+}
