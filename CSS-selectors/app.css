@@ -1,10 +1,16 @@
-/* Universal Selector */
+/* Universal Selector 
 
 * {
     background-color: cyan;
 }
 
+*/
+
 /* HTML Element Selector */
+
+body {
+    background-color: #f1faee;
+}
 
 button {
     font-size: 30px;
@@ -13,5 +19,5 @@ button {
 /* HTML Element Selector List */
 
 h1, h2 {
-    color: darkslateblue;
+    color: #1d3557;
 }
