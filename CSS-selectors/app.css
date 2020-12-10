@@ -49,7 +49,7 @@ span {
 }
 
 footer a {
-    color: #e63946;;
+    color: #e63946;
 }
 
 /* Adjacent Selector */
@@ -63,4 +63,10 @@ h2 + button {
 
 footer > a {
     color: #457b9d;
+}
+
+/* Attribute Selector */
+
+input[type="password"] {
+    color: #e63946;
 }
