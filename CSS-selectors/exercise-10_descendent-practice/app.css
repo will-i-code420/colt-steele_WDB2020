@@ -5,3 +5,8 @@
     2) paragraph with id dislikes links to be bold and red color
 
 */
+
+header a {
+    font-size: 30px;
+    color: teal;
+}
