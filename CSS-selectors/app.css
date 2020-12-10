@@ -46,6 +46,8 @@ span {
 
 .post a {
     color: #457b9d;
+    text-decoration: none;
+    font-weight: 700;
 }
 
 footer a {
@@ -73,4 +75,15 @@ input[type="password"] {
 
 a[href*="google"] {
     color: magenta;
+}
+
+/* Psuedo Classes */
+
+.post button:hover {
+    background-color: #e63946;
+    color: #f1faee;
+}
+
+.post a:hover {
+    text-decoration: underline;
 }
