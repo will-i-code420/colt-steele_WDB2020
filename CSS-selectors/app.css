@@ -41,3 +41,13 @@ span {
     color: #f1faee;
     font-size: 12px;
 }
+
+/* Descendent Selector */
+
+.post a {
+    color: #457b9d;
+}
+
+footer a {
+    color: #e63946;;
+}
