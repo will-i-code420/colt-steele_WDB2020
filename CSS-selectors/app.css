@@ -84,6 +84,14 @@ a[href*="google"] {
     color: #f1faee;
 }
 
+.post button:active {
+    background-color: #02c39a;
+}
+
 .post a:hover {
     text-decoration: underline;
+}
+
+.post:nth-of-type(2n) {
+    background-color: #dfe8dc;
 }
