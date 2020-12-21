@@ -12,6 +12,11 @@ nav {
     justify-content: space-between;
 }
 
+ul {
+    flex: 1;
+    max-width: 50%;
+}
+
 ul,li {
     display: inline;
     margin: 0;
