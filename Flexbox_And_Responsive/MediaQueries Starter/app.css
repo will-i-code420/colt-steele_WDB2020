@@ -15,10 +15,13 @@ nav {
 ul {
     flex: 1;
     max-width: 50%;
+    display: flex;
+    justify-content: space-evenly;
+    text-decoration: none;
 }
 
-ul,li {
-    display: inline;
+ul,li,a {
+    /* display: inline; */
     margin: 0;
     padding: 0;
 }
