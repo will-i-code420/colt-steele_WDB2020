@@ -29,3 +29,9 @@ body {
 #heroTxt span {
     color: #ea1c2c;
 }
+
+@media (max-width: 1200px) {
+    #heroTxt h1 {
+    font-size: 3rem;
+}
+}
