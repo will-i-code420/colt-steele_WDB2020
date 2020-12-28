@@ -3,6 +3,10 @@ body {
     font-family: "Nunito", sans-serif;
 }
 
+.infoContainer {
+    margin-top: 100px;
+}
+
 .info h2 {
     color: #ea1c2c;
     font-weight: 200;
