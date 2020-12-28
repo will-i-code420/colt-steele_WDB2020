@@ -11,3 +11,12 @@ body {
 #mainNav .navbar-brand {
     color: #ea1c2c;
 }
+
+#mainNav .nav-link {
+    color: white;
+    transition: color 150ms;
+}
+
+#mainNav .nav-link:hover {
+    color: #ea1c2c;
+}
