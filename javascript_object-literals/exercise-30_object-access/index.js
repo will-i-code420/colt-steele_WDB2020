@@ -13,3 +13,5 @@ const restaurant = {
 }
 
 //YOUR CODE GOES DOWN HERE:
+
+let fullAddress = `${restaurant.address}, ${restaurant.city}, ${restaurant.state} ${restaurant.zipcode}`;
