@@ -10,3 +10,4 @@ const airplaneSeats = [
 ];
 
 // YOUR CODE GOES BELOW THIS LINE:
+airplaneSeats[3][1] = 'Hugo';
