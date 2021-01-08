@@ -13,10 +13,14 @@ while (command !== 'quit' && command !== 'q') {
     }
     console.log('******');
   } else if (command === 'delete') {
+    let length = todos.length;
     let index = parseInt(prompt('Which number to delete?')) - 1;
+    while (index > length) {
+      index = parseInt(prompt('ENTER A VALID NUMBER ON YOUR LIST!!')) - 1;
+    }
     const deleted = todos.splice(index, 1);
     console.log(`OK, removed ${deleted[0]} from your list`)
-    const length = todos.length;
+    length = todos.length;
     console.log('******');
     for (let i = 0; i < length; i++) {
       console.log(`${i + 1}:  ${todos[i]}`);
