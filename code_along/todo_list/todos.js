@@ -15,7 +15,7 @@ while (command !== 'quit' && command !== 'q') {
   } else if (command === 'delete') {
     let length = todos.length;
     let index = parseInt(prompt('Which number to delete?')) - 1;
-    while (index > length) {
+    while (index > length || index < 0 || !index) {
       index = parseInt(prompt('ENTER A VALID NUMBER ON YOUR LIST!!')) - 1;
     }
     const deleted = todos.splice(index, 1);
