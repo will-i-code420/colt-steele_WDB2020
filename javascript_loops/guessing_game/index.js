@@ -11,9 +11,13 @@ while (!max) {
 }
 const num = Math.floor(Math.random() * max) + 1;
 let numOfGuess = 0;
-let guess = parseInt(prompt('Guess a number between 1 and 20'));
-while (guess !== num || guess === NaN) {
-  guess = prompt('Guess a number between 1 and 20');
+let guess = parseInt(prompt(`Guess a number between 1 and ${max}`));
+while (guess !== num) {
   numOfGuess++;
+  if (guess > num) {
+    guess = parseInt(prompt('TOO HIGH, GUESS AGAIN'));
+  } else {
+    guess = parseInt(prompt('TOO LOW, GUESS AGAIN'));
+  }
 }
 console.log(`You took ${numOfGuess} guess'`);
