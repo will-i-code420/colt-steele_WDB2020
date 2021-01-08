@@ -4,7 +4,7 @@ while (command !== 'quit' && command !== 'q') {
   if (command === 'new') {
     let todo = prompt('Input New TODO Item:');
     todos.push(todo);
-    command = prompt('Input A Command').toLowerCase();
+    console.log(`${todo} added to the list`);
   } else if (command === 'list') {
     const length = todos.length;
     console.log('******');
@@ -12,7 +12,6 @@ while (command !== 'quit' && command !== 'q') {
       console.log(`${i + 1}:  ${todos[i]}`);
     }
     console.log('******');
-    command = prompt('Input A Command').toLowerCase();
   } else if (command === 'delete') {
     let index = parseInt(prompt('Which number to delete?')) - 1;
     todos.splice(index, 1);
@@ -22,9 +21,9 @@ while (command !== 'quit' && command !== 'q') {
       console.log(`${i + 1}:  ${todos[i]}`);
     }
     console.log('******');
-    command = prompt('Input A Command').toLowerCase();
   } else {
     command = prompt('Unknown Command, Input A VALID Command!!').toLowerCase();
   }
+  command = prompt('Input A Command').toLowerCase();
 }
 console.log('YOU HAVE QUIT THE APP');
