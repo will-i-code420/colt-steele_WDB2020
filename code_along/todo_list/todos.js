@@ -1,6 +1,6 @@
 const todos = [];
 let command = prompt('Input A Command').toLowerCase();
-while (command !== 'quit') {
+while (command !== 'quit' && command !== 'q') {
   if (command === 'new') {
     let todo = prompt('Input New TODO Item:');
     todos.push(todo);
