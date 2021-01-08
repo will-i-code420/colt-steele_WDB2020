@@ -6,13 +6,13 @@
 
 
 let max = parseInt(prompt('Input Maximum Number'));
-if (max === NaN) {
+while (!max) {
   max = parseInt(prompt('Input Maximum Number'));
 }
 const num = Math.floor(Math.random() * max) + 1;
 let numOfGuess = 0;
 let guess = parseInt(prompt('Guess a number between 1 and 20'));
-while (guess !== num && guess === NaN) {
+while (guess !== num || guess === NaN) {
   guess = prompt('Guess a number between 1 and 20');
   numOfGuess++;
 }
