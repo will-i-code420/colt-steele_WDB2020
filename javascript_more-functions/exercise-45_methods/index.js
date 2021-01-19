@@ -2,3 +2,12 @@
 // of squares.  It should contain 2 methods
 // 1) area - which should accept the length of a side and return it squared
 // 2) perimeter - which should accept the length of a side and return it multiplied by 4
+
+const square = {
+  area(side) {
+    return side * side;
+  },
+  perimeter(side) {
+    return side * 4;
+  }
+};
