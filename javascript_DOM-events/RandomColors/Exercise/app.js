@@ -10,9 +10,31 @@ function randomNumber() {
   return Math.floor(Math.random() * 255) + 1;
 };
 
+function randomColor() {
+  const newColor = {
+    color: '',
+    light: null;
+  };
+  const num1 = randomColor();
+  const num2 = randomColor();
+  const num3 = randomColor();
+  newColor.color = `rgb(${num1}, ${num2}, ${num3})`;
+  if (num1 + num2 + num3 > 225) {
+    newColor.light = true;
+  } else {
+    newColor.light = false;
+  }
+  return newColor;
+};
+
 btn.addEventListener('click', function() {
   const body = document.querySelector('body')
-  const newBgColor = `rgb(${randomNumber()}, ${randomNumber()}, ${randomNumber()})`;
-  body.style.backgroundColor = `${newBgColor}`;
-  h1.innerText = `${newBgColor}`;
+  const newBgColor = randomColor();
+  body.style.backgroundColor = `${newBgColor.color}`;
+  if (newBgColor.light) {
+    h1.style.color = 'black';
+  } else {
+    h1.style.color = 'white';
+  }
+  h1.innerText = `${newBgColor.color}`
 });
