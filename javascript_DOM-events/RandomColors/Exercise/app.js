@@ -5,8 +5,7 @@ const h1 = document.querySelector('h1');
 const btn = document.querySelector('button');
 
 function randomNumber() {
-  const num = Math.floor(Math.random() * 255) + 1;
-  return num;
+  return Math.floor(Math.random() * 255) + 1;
 };
 
 btn.addEventListener('click', function() {
