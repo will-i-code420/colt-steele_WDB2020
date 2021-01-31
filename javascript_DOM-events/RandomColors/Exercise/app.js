@@ -11,10 +11,7 @@ function randomNumber() {
 
 btn.addEventListener('click', function() {
   const body = document.querySelector('body')
-  const num1 = randomNumber();
-  const num2 = randomNumber();
-  const num3 = randomNumber();
-  const newBgColor = `rgb(${num1}, ${num2}, ${num3})`;
+  const newBgColor = `rgb(${randomNumber()}, ${randomNumber()}, ${randomNumber()})`;
   body.style.backgroundColor = `${newBgColor}`;
   h1.innerText = `${newBgColor}`;
 });
