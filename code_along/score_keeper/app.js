@@ -9,7 +9,7 @@ let winScoreOption = document.querySelector('#win-score');
 let winScore = parseInt(winScoreOption.value);
 let isGameOver = false;
 
-winScoreOption.addEventListener('input', e => {
+winScoreOption.addEventListener('change', e => {
   winScore = parseInt(e.target.value);
 });
 
