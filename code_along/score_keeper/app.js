@@ -19,6 +19,8 @@ p1Btn.addEventListener('click', e => {
     p1Score++;
     if (p1Score === winScore) {
       isGameOver = true;
+      p1Btn.disabled = true;
+      p2Btn.disabled = true;
       p1ScoreContainer.classList.add('has-text-success');
       p2ScoreContainer.classList.add('has-text-danger');
     }
@@ -31,6 +33,8 @@ p2Btn.addEventListener('click', e => {
     p2Score++;
     if (p2Score === winScore) {
       isGameOver = true;
+      p1Btn.disabled = true;
+      p2Btn.disabled = true;
       p1ScoreContainer.classList.add('has-text-danger');
       p2ScoreContainer.classList.add('has-text-success');
     }
@@ -48,4 +52,6 @@ function resetGame() {
   p1ScoreContainer.classList.remove('has-text-success', 'has-text-danger');
   p2ScoreContainer.classList.remove('has-text-success', 'has-text-danger');
   isGameOver = false;
+  p1Btn.disabled = false;
+  p2Btn.disabled = false;
 }
