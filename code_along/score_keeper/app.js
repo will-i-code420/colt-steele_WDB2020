@@ -5,8 +5,13 @@ const p1ScoreContainer = document.querySelector('#p1-score');
 const p2ScoreContainer = document.querySelector('#p2-score');
 let p1Score = 0;
 let p2Score = 0;
-let winScore = 5;
+let winScoreOption = document.querySelector('#win-score');
+let winScore = parseInt(winScoreOption.value);
 let isGameOver = false;
+
+winScoreOption.addEventListener('input', e => {
+  winScore = parseInt(e.target.value);
+});
 
 p1Btn.addEventListener('click', e => {
   if (!isGameOver) {
