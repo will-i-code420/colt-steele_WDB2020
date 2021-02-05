@@ -11,6 +11,7 @@ let isGameOver = false;
 
 winScoreOption.addEventListener('change', e => {
   winScore = parseInt(e.target.value);
+  resetGame();
 });
 
 p1Btn.addEventListener('click', e => {
@@ -33,10 +34,12 @@ p2Btn.addEventListener('click', e => {
   }
 })
 
-resetBtn.addEventListener('click', e => {
+resetBtn.addEventListener('click', resetGame);
+
+function resetGame() {
   p1Score = 0;
   p2Score = 0;
   p1ScoreContainer.innerText = p1Score;
   p2ScoreContainer.innerText = p2Score;
   isGameOver = false;
-})
+}
