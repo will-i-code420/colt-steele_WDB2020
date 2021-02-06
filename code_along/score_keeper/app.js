@@ -5,14 +5,14 @@
 
 const p1 = {
   score: 0,
-  btn: document.querySelector('#p1-btn');,
-  display: document.querySelector('#p1-score');
+  btn: document.querySelector('#p1-btn'),
+  display: document.querySelector('#p1-score')
 };
 
 const p2 = {
   score: 0,
-  btn: document.querySelector('#p2-btn');,
-  display: document.querySelector('#p2-score');
+  btn: document.querySelector('#p2-btn'),
+  display: document.querySelector('#p2-score')
 };
 
 const resetBtn = document.querySelector('#reset-btn');
@@ -30,7 +30,7 @@ function updateScores(player, opponent) {
       player.display.classList.add('has-text-success');
       opponent.display.classList.add('has-text-danger');
     }
-    player.display.innerText = p1Score;
+    player.display.innerText = player.score;
   }
 };
 
