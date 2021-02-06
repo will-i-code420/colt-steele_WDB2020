@@ -1,3 +1,8 @@
+// add win by 2 feature
+// add more players
+// animation for win
+// best 2 of 3 or more games for same players
+
 const p1 = {
   score: 0,
   btn: document.querySelector('#p1-btn');,
