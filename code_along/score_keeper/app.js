@@ -45,13 +45,11 @@ p2.btn.addEventListener('click', e => {
 resetBtn.addEventListener('click', resetGame);
 
 function resetGame() {
-  p1.score = 0;
-  p2.score = 0;
-  p1.display.innerText = p1.score;
-  p2.display.innerText = p2.score;
-  p1.display.classList.remove('has-text-success', 'has-text-danger');
-  p2.display.classList.remove('has-text-success', 'has-text-danger');
+  for (let p of [p1, p2]) {
+    p.score = 0;
+    p.display.innerText = p.score;
+    p.display.classList.remove('has-text-success', 'has-text-danger');
+    p.btn.disabled = false;
+  }
   isGameOver = false;
-  p1.btn.disabled = false;
-  p2.btn.disabled = false;
 }
