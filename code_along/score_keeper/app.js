@@ -1,15 +1,14 @@
-// add win by 2 feature
 // add more players
 // animation for win
 // best 2 of 3 or more games for same players
 
-const p1 = {
+const player1 = {
   score: 0,
   btn: document.querySelector('#p1-btn'),
   display: document.querySelector('#p1-score')
 };
 
-const p2 = {
+const player2 = {
   score: 0,
   btn: document.querySelector('#p2-btn'),
   display: document.querySelector('#p2-score')
@@ -23,7 +22,7 @@ let isGameOver = false;
 function updateScores(player, opponent) {
   if (!isGameOver) {
     player.score++;
-    if (player.score === winScore) {
+    if (player.score === winScore && winByTwo(player, opponent)) {
       isGameOver = true;
       player.btn.disabled = true;
       opponent.btn.disabled = true;
@@ -34,23 +33,31 @@ function updateScores(player, opponent) {
   }
 };
 
+function winByTwo(player, opponent) {
+  if (opponent.score + 1 === player.score) {
+    winScore++;
+    return false;
+  }
+  return true;
+};
+
 winScoreOption.addEventListener('change', e => {
   winScore = parseInt(e.target.value);
   resetGame();
 });
 
-p1.btn.addEventListener('click', e => {
-  updateScores(p1, p2);
+player1.btn.addEventListener('click', e => {
+  updateScores(player1, player2);
 })
 
-p2.btn.addEventListener('click', e => {
-  updateScores(p2, p1);
+player2.btn.addEventListener('click', e => {
+  updateScores(player2, player1);
 })
 
 resetBtn.addEventListener('click', resetGame);
 
 function resetGame() {
-  for (let p of [p1, p2]) {
+  for (let p of [player1, player2]) {
     p.score = 0;
     p.display.innerText = p.score;
     p.display.classList.remove('has-text-success', 'has-text-danger');
