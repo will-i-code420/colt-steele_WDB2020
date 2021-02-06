@@ -1,10 +1,16 @@
-const p1Btn = document.querySelector('#p1-btn');
-const p2Btn = document.querySelector('#p2-btn');
+const p1 = {
+  score: 0,
+  btn: document.querySelector('#p1-btn');,
+  display: document.querySelector('#p1-score');
+};
+
+const p2 = {
+  score: 0,
+  btn: document.querySelector('#p2-btn');,
+  display: document.querySelector('#p2-score');
+};
+
 const resetBtn = document.querySelector('#reset-btn');
-const p1ScoreContainer = document.querySelector('#p1-score');
-const p2ScoreContainer = document.querySelector('#p2-score');
-let p1Score = 0;
-let p2Score = 0;
 let winScoreOption = document.querySelector('#win-score');
 let winScore = parseInt(winScoreOption.value);
 let isGameOver = false;
