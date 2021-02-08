@@ -24,9 +24,7 @@
             </header>
             <div class="card-content">
               <div class="content">
-                <h1 class="title is-1">
-                  <span id="p1-score">0</span> to <span id="p2-score">0</span>
-                </h1>
+                <h1 id="score-display" class="title is-1"></h1>
                 <p class="subtitle">
                   Use The Buttons Below To Keep Score
                 </p>
@@ -47,7 +45,7 @@
                 <label for="player-select" class="label is-large is-inline">Num Of Players</label>
                 <div class="select is-rounded">
                   <select id="player-select" name="">
-                    <option value="2">2</option>
+                    <option value="2" selected>2</option>
                     <option value="3">3</option>
                     <option value="4">4</option>
                   </select>
@@ -55,9 +53,6 @@
               </div>
             </div>
             <footer id="game-btns" class="card-footer">
-              <button id="p1-btn" class="button is-large is-primary card-footer-item">Player 1 +1</button>
-              <button id="p2-btn" class="button is-large is-info card-footer-item">Player 2 +1</button>
-              <button id="reset-btn" class="button is-large is-danger card-footer-item">Reset</button>
             </footer>
           </div>
         </div>
