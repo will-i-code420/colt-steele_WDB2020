@@ -1,4 +1,3 @@
-// add more players
 // animation for win
 // best 2 of 3 or more games for same players
 
@@ -12,6 +11,9 @@ let winScore = parseInt(winScoreOption.value);
 let numOfPlayersOption = document.querySelector('#player-select');
 let players = [];
 createPlayers(numOfPlayersOption.value);
+
+
+
 
 function createPlayers(numOfPlayers) {
   // remove previous btns
