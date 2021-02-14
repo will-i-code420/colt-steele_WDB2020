@@ -1,3 +1,5 @@
+// make use of images, title, score and some other things
+
 const formBtn = document.querySelector('#search-form-btn');
 const searchResultsContainer = document.querySelector('#search-results-container');
 const searchResultsList = document.querySelector('#search-results-list');
