@@ -18,3 +18,10 @@ if (args.length > 3) return console.log('ERROR, too many commands'.red);
 const francOutput = franc(`${args[2]}`);
 console.log(francOutput);
 if (francOutput === 'und') return console.log('UNDEFINED!  Please input longer string'.red);
+try {
+    const langsOutput = langs.where('3', `${francOutput}`);
+    console.log(langsOutput);
+    console.log(langsOutput.name.rainbow);
+} catch (error) {
+    console.log(error);
+}
