@@ -1,7 +1,4 @@
-body {
-    max-width: 100%;
-}
-
 #search-results-container {
     display: flex;
+    align-items: center;
 }
