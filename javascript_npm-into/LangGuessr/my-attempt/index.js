@@ -10,3 +10,11 @@
 const colors = require('colors');
 const franc = require('franc');
 const langs = require('langs');
+
+colors.enable();
+
+const args = process.argv;
+if (args.length > 3) return console.log('ERROR, too many commands'.red);
+const francOutput = franc(`${args[2]}`);
+console.log(francOutput);
+if (francOutput === 'und') return console.log('UNDEFINED!  Please input longer string'.red);
