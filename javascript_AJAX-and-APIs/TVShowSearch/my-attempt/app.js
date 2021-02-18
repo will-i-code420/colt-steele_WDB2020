@@ -17,14 +17,16 @@ const findShow = async (e) => {
     const cardImg = document.createElement('img');
     const cardTitle = document.createElement('h2');
     const cardInfo = document.createElement('p');
-    newCard.id = 'search-result-card';
+    newCard.classList.add('col', 'col-md-4', 'col-lg-3', 'my-3');
     if (show.show.image) {
       cardImg.src = `${show.show.image.medium}`;
     } else {
       cardImg.src = 'https://unsplash.com/photos/ZNTPlG050tk';
     }
+    const regex = /<(?:"[^"]*"['"]*|'[^']*'['"]*|[^'">])+>/gi
+    const summaryText = show.show.summary;
     cardTitle.textContent = `${show.show.name}`;
-    cardInfo.textContent = `${show.show.summary}`
+    cardInfo.textContent = `${summaryText.replace(regex, '')}`;
     newCard.append(cardImg, cardTitle, cardInfo);
     searchResultsContainer.append(newCard);
   })
