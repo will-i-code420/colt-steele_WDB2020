@@ -1,4 +1,5 @@
-// make use of images, title, score and some other things
+// finish implementing bootstrap styling
+// rewrite as express server side render using ejs
 
 const form = document.querySelector('#search-form');
 const searchResultsContainer = document.querySelector('#search-results-container');
