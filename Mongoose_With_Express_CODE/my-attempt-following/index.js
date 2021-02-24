@@ -18,6 +18,10 @@ mongoose.connect('mongodb://localhost:27017/farmAppExample', { useNewUrlParser: 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
+app.get('/products', async (req, res) => {
+    const allProducts = await Product.find({});
+    res.render('products/index', {allProducts});
+})
 app.listen(3000, () => {
     console.log (`Server Running on Port 3000`);
 });
