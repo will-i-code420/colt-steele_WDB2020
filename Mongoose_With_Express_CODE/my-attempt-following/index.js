@@ -7,7 +7,7 @@ const mongoose = require('mongoose');
 
 const Product = require('./models/product');
 
-mongoose.connect('mongodb://localhost:27017/farmAppExample', { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect('mongodb://localhost:27017/farmStand', { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => {
         console.log("CONNECTED TO MONGO DB")
     })
@@ -22,13 +22,18 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(methodOverride('_method'));
 
+app.get('/', (req, res) => {
+    res.redirect('/products');
+});
+
 app.get('/products', async (req, res) => {
     const allProducts = await Product.find({});
     res.render('products/index', {allProducts});
 });
 
 app.get('/products/new', (req, res) => {
-    res.render('products/new');
+    const categories = Product.schema.path('category').enumValues;
+    res.render('products/new', {categories});
 });
 
 app.get('/products/:id', async (req, res) => {
@@ -39,8 +44,9 @@ app.get('/products/:id', async (req, res) => {
 
 app.get('/products/:id/edit', async (req, res) => {
     const {id} = req.params;
+    const categories = Product.schema.path('category').enumValues;
     const product = await Product.findById(id);
-    res.render('products/edit', {product});
+    res.render('products/edit', {product, categories});
 });
 
 app.post('/products', async (req, res) => {
