@@ -21,7 +21,14 @@ app.set('view engine', 'ejs');
 app.get('/products', async (req, res) => {
     const allProducts = await Product.find({});
     res.render('products/index', {allProducts});
-})
+});
+
+app.get('/products/:id', async (req, res) => {
+    const {id} = req.params;
+    const product = await Product.findById(id);
+    res.render('products/details', {product});
+});
+
 app.listen(3000, () => {
     console.log (`Server Running on Port 3000`);
 });
