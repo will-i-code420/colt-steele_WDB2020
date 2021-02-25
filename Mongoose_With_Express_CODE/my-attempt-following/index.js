@@ -7,6 +7,8 @@ const mongoose = require('mongoose');
 
 const Product = require('./models/product');
 
+const categories = Product.schema.path('category').enumValues;
+
 mongoose.connect('mongodb://localhost:27017/farmStand', { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => {
         console.log("CONNECTED TO MONGO DB")
@@ -28,13 +30,13 @@ app.get('/', (req, res) => {
 
 app.get('/products', async (req, res) => {
     const allProducts = await Product.find({});
-    const categories = Product.schema.path('category').enumValues;
-    res.render('products/index', {products: allProducts, categories});
+    res.render('products/index', {products: allProducts});
 });
 
 app.get('/products/new', (req, res) => {
-    const categories = Product.schema.path('category').enumValues;
-    res.render('products/new', {categories});
+    // find where the new request came from
+    const referer = req.headers.referer.slice(req.headers.referer.lastIndexOf('/') + 1)
+    res.render('products/new', {categories, referer});
 });
 
 app.get('/products/:id', async (req, res) => {
@@ -45,9 +47,18 @@ app.get('/products/:id', async (req, res) => {
 
 app.get('/products/:id/edit', async (req, res) => {
     const {id} = req.params;
-    const categories = Product.schema.path('category').enumValues;
     const product = await Product.findById(id);
     res.render('products/edit', {product, categories});
+});
+
+app.get('/products/filter/:category', async (req, res) => {
+    const {category} = req.params;
+    try {
+        const filteredProducts = await Product.find({category: category});
+        res.render('products/category', {products: filteredProducts, category});
+    } catch (error) {
+        console.log(error);
+    }
 });
 
 app.post('/products', async (req, res) => {
@@ -55,16 +66,6 @@ app.post('/products', async (req, res) => {
     const newProduct = new Product({name, price, category});
     await newProduct.save();
     res.redirect(`/products/${newProduct._id}`);
-});
-
-app.post('/products/filter', async (req, res) => {
-    const {category} = req.body;
-    if (category === 'all') {
-       return res.redirect('/products');
-    }
-    const filteredProducts = await Product.find({category: category});
-    const categories = Product.schema.path('category').enumValues;
-    res.render('products/index', {products: filteredProducts, categories});
 });
 
 app.put('/products/:id', async (req, res) => {
