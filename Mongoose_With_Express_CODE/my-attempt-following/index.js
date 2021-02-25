@@ -28,7 +28,8 @@ app.get('/', (req, res) => {
 
 app.get('/products', async (req, res) => {
     const allProducts = await Product.find({});
-    res.render('products/index', {allProducts});
+    const categories = Product.schema.path('category').enumValues;
+    res.render('products/index', {products: allProducts, categories});
 });
 
 app.get('/products/new', (req, res) => {
@@ -54,6 +55,16 @@ app.post('/products', async (req, res) => {
     const newProduct = new Product({name, price, category});
     await newProduct.save();
     res.redirect(`/products/${newProduct._id}`);
+});
+
+app.post('/products/filter', async (req, res) => {
+    const {category} = req.body;
+    if (category === 'all') {
+       return res.redirect('/products');
+    }
+    const filteredProducts = await Product.find({category: category});
+    const categories = Product.schema.path('category').enumValues;
+    res.render('products/index', {products: filteredProducts, categories});
 });
 
 app.put('/products/:id', async (req, res) => {
