@@ -11,7 +11,7 @@
     <p>
         Price: $<%= product.price %>
         <br>
-        Category: <a href="/products/filter/<%= product.category %>"><%= product.category.toUpperCase() %></a>
+        Category: <a href="/products?category=<%= product.category %>"><%= product.category.toUpperCase() %></a>
     </p>
     <a href="/products">All Products</a>
     <a href="/products/<%= product._id %>/edit">Edit</a>

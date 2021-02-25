@@ -29,13 +29,19 @@ app.get('/', (req, res) => {
 });
 
 app.get('/products', async (req, res) => {
-    const allProducts = await Product.find({});
-    res.render('products/index', {products: allProducts});
+    const {category = 'all'} = req.query;
+    let products;
+    if (category !== 'all') {
+        products = await Product.find({category});
+    } else {
+        products = await Product.find({});
+    }
+    res.render('products/index', {products, category});
 });
 
 app.get('/products/new', (req, res) => {
     // find where the new request came from
-    const referer = req.headers.referer.slice(req.headers.referer.lastIndexOf('/') + 1)
+    const referer = req.headers.referer.slice(req.headers.referer.indexOf('=') + 1)
     res.render('products/new', {categories, referer});
 });
 
@@ -49,16 +55,6 @@ app.get('/products/:id/edit', async (req, res) => {
     const {id} = req.params;
     const product = await Product.findById(id);
     res.render('products/edit', {product, categories});
-});
-
-app.get('/products/filter/:category', async (req, res) => {
-    const {category} = req.params;
-    try {
-        const filteredProducts = await Product.find({category: category});
-        res.render('products/category', {products: filteredProducts, category});
-    } catch (error) {
-        console.log(error);
-    }
 });
 
 app.post('/products', async (req, res) => {
