@@ -5,7 +5,7 @@ const ejs = require('ejs');
 const methodOverride = require('method-override');
 const mongoose = require('mongoose');
 
-mongoose.connect('mongodb://localhost:27017/yelpCamp', { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect('mongodb://localhost:27017/yelp-camp', { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => {
         console.log("CONNECTED TO MONGO DB")
     })
