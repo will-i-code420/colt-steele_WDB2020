@@ -4,10 +4,14 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>YelpCamp Home</title>
+    <title><%= campground.title %> Details</title>
 </head>
 <body>
-    <h1>Welcome To Yelp Camp</h1>
-    <a href="#">Learn More</a>
+    <h1><%= campground.title %></h1>
+    <h2><%= campground.price %></h2>
+    <h3><%= campground.location %></h3>
+    <p>
+        <%= campground.description %>
+    </p>
 </body>
 </html>

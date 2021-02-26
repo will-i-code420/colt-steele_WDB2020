@@ -5,6 +5,7 @@ const ejs = require('ejs');
 const methodOverride = require('method-override');
 const mongoose = require('mongoose');
 const db = mongoose.connection;
+const Campground = require('./models/campground');
 
 mongoose.connect('mongodb://localhost:27017/yelp-camp', { useNewUrlParser: true, useUnifiedTopology: true })
 
@@ -20,7 +21,14 @@ app.use(express.json());
 app.use(methodOverride('_method'));
 
 app.get('/', (req, res) => {
-    res.send('welcome');
+    res.render('home');
+});
+
+app.post('/new-campground', async (req, res) => {
+    const {title, price, description, location} = req.body;
+    const campground = new Campground({title, price, description, location});
+    await campground.save();
+    res.render('/campgrounds/details', campground);
 });
 
 app.listen(3000, () => {
