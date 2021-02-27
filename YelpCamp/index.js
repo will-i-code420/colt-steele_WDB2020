@@ -24,6 +24,11 @@ app.get('/', (req, res) => {
     res.render('home');
 });
 
+app.get('/campgrounds', async (req, res) => {
+    const campgrounds = await Campground.find({});
+    res.render('campgrounds/index', campgrounds);
+});
+
 app.post('/new-campground', async (req, res) => {
     const {title, price, description, location} = req.body;
     const campground = new Campground({title, price, description, location});
