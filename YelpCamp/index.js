@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const path = require('path');
 const ejs = require('ejs');
+const ejsMate = require('ejs-mate');
 const methodOverride = require('method-override');
 const mongoose = require('mongoose');
 const db = mongoose.connection;
@@ -14,6 +15,7 @@ db.once('open', () => {
     console.log('DB Connection Successful');
 });
 
+app.engine('ejs', ejsMate);
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 app.use(express.urlencoded({ extended: true }));
