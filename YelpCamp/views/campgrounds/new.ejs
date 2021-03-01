@@ -2,13 +2,13 @@
     <h1>Add New Campground</h1>
     <form action="/new-campground" method="POST">
         <p>
-            <label for="title">Campground Name</label>
-            <input type="text" id="title" name="campground[title]">
+            <label for="title" class="form-label">Campground Name</label>
+            <input type="text" id="title" class="form-control" name="campground[title]">
         </p>
         <p>
-            <label for="location">Location</label>
-            <input type="text" id="location" name="campground[location]" placeholder="City, State">
+            <label for="location" class="form-label">Location</label>
+            <input type="text" id="location" class="form-control" name="campground[location]" placeholder="City, State">
         </p>
-        <button>Add</button>
+        <button class="btn btn-success">Add</button>
     </form>
-    <a href="/campgrounds">All Campgrounds</a>
+    <a class="btn btn-primary" href="/campgrounds">All Campgrounds</a>
