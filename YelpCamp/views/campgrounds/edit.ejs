@@ -9,6 +9,18 @@
             <label for="location">Location</label>
             <input type="text" id="location" name="campground[location]" value="<%= campground.location %>">
         </p>
-        <button>Add</button>
+        <p>
+            <label for="price">Price</label>
+            <input type="text" id="price" name="campground[price]" value="<%= campground.price %>">
+        </p>
+        <p>
+            <label for="image">Location</label>
+            <input type="text" id="image" name="campground[image]" value="<%= campground.image %>">
+        </p>
+        <p>
+            <label for="description" class="form-label">Description</label>
+            <textarea name="campground[description]" id="description" class="form-control" cols="30" rows="10" value="<%= campground.description %> "></textarea>
+        </p>
+        <button class="btn btn-success">Edit</button>
     </form>
     <a href="/campgrounds/<%= campground._id %>">Cancel</a>

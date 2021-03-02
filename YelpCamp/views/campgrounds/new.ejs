@@ -9,6 +9,18 @@
             <label for="location" class="form-label">Location</label>
             <input type="text" id="location" class="form-control" name="campground[location]" placeholder="City, State">
         </p>
+        <p>
+            <label for="price" class="form-label">Price Per Night</label>
+            <input type="text" id="price" class="form-control" name="campground[price]" placeholder="22.99">
+        </p>
+        <p>
+            <label for="image" class="form-label">Image URL</label>
+            <input type="text" id="image" class="form-control" name="campground[image]" placeholder="https://www.unsplash.com">
+        </p>
+        <p>
+            <label for="description" class="form-label">Description</label>
+            <textarea name="campground[description]" id="description" class="form-control" cols="30" rows="10"></textarea>
+        </p>
         <button class="btn btn-success">Add</button>
     </form>
     <a class="btn btn-primary" href="/campgrounds">All Campgrounds</a>
