@@ -1,25 +1,55 @@
 <% layout('layouts/boilerplate')%>
     <h1>Edit <%= campground.title %></h1>
-    <form action="/campgrounds/<%= campground._id %>?_method=PUT" method="POST">
+    <form class="needs-validation" action="/campgrounds/<%= campground._id %>?_method=PUT" method="POST" novalidate>
         <p>
             <label for="title">Campground Name</label>
-            <input type="text" id="title" name="campground[title]" value="<%= campground.title %>">
+            <input type="text" id="title" name="campground[title]" value="<%= campground.title %>" required>
+            <p class="valid-feedback">
+                VALID CAMPGROUND NAME
+            </p>
+            <p class="invalid-feedback">
+                INVALID CAMPGROUND NAME
+            </p>
         </p>
         <p>
             <label for="location">Location</label>
-            <input type="text" id="location" name="campground[location]" value="<%= campground.location %>">
+            <input type="text" id="location" name="campground[location]" value="<%= campground.location %>" required>
+            <p class="valid-feedback">
+                VALID CAMPGROUND LOCATION
+            </p>
+            <p class="invalid-feedback">
+                INVALID CAMPGROUND LOCATION
+            </p>
         </p>
         <p>
             <label for="price">Price</label>
-            <input type="text" id="price" name="campground[price]" value="<%= campground.price %>">
+            <input type="text" id="price" name="campground[price]" value="<%= campground.price %>" required>
+            <p class="valid-feedback">
+                VALID CAMPGROUND PRICE
+            </p>
+            <p class="invalid-feedback">
+                INVALID CAMPGROUND PRICE
+            </p>
         </p>
         <p>
             <label for="image">Location</label>
-            <input type="text" id="image" name="campground[image]" value="<%= campground.image %>">
+            <input type="text" id="image" name="campground[image]" value="<%= campground.image %>" required>
+            <p class="valid-feedback">
+                VALID CAMPGROUND LOCATION
+            </p>
+            <p class="invalid-feedback">
+                INVALID CAMPGROUND LOCATION
+            </p>
         </p>
         <p>
             <label for="description" class="form-label">Description</label>
-            <textarea name="campground[description]" id="description" class="form-control" cols="30" rows="10" value="<%= campground.description %> "></textarea>
+            <textarea name="campground[description]" id="description" class="form-control" cols="30" rows="10" value="<%= campground.description %>" required></textarea>
+            <p class="valid-feedback">
+                VALID CAMPGROUND DESCRIPTION
+            </p>
+            <p class="invalid-feedback">
+                INVALID CAMPGROUND DESCRIPTION
+            </p>
         </p>
         <button class="btn btn-success">Edit</button>
     </form>

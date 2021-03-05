@@ -1,25 +1,55 @@
 <% layout('layouts/boilerplate')%>
     <h1>Add New Campground</h1>
-    <form action="/new-campground" method="POST">
+    <form class="needs-validation" action="/new-campground" method="POST" novalidate>
         <p>
             <label for="title" class="form-label">Campground Name</label>
-            <input type="text" id="title" class="form-control" name="campground[title]">
+            <input type="text" id="title" class="form-control" name="campground[title]" required>
+            <p class="valid-feedback">
+                VALID CAMPGROUND NAME
+            </p>
+            <p class="invalid-feedback">
+                INVALID CAMPGROUND NAME
+            </p>
         </p>
         <p>
             <label for="location" class="form-label">Location</label>
-            <input type="text" id="location" class="form-control" name="campground[location]" placeholder="City, State">
+            <input type="text" id="location" class="form-control" name="campground[location]" placeholder="City, State" required>
+            <p class="valid-feedback">
+                VALID CAMPGROUND LOCATION
+            </p>
+            <p class="invalid-feedback">
+                INVALID CAMPGROUND LOCATION
+            </p>
         </p>
         <p>
             <label for="price" class="form-label">Price Per Night</label>
-            <input type="text" id="price" class="form-control" name="campground[price]" placeholder="22.99">
+            <input type="text" id="price" class="form-control" name="campground[price]" placeholder="22.99" required>
+            <p class="valid-feedback">
+                VALID CAMPGROUND PRICE
+            </p>
+            <p class="invalid-feedback">
+                INVALID CAMPGROUND PRICE
+            </p>
         </p>
         <p>
             <label for="image" class="form-label">Image URL</label>
-            <input type="text" id="image" class="form-control" name="campground[image]" placeholder="https://www.unsplash.com">
+            <input type="text" id="image" class="form-control" name="campground[image]" placeholder="https://www.unsplash.com" required>
+            <p class="valid-feedback">
+                VALID CAMPGROUND IMAGE URL
+            </p>
+            <p class="invalid-feedback">
+                INVALID CAMPGROUND IMAGE URL
+            </p>
         </p>
         <p>
             <label for="description" class="form-label">Description</label>
-            <textarea name="campground[description]" id="description" class="form-control" cols="30" rows="10"></textarea>
+            <textarea name="campground[description]" id="description" class="form-control" cols="30" rows="10" required></textarea>
+            <p class="valid-feedback">
+                VALID CAMPGROUND DESCRIPTION
+            </p>
+            <p class="invalid-feedback">
+                INVALID CAMPGROUND DESCRIPTION
+            </p>
         </p>
         <button class="btn btn-success">Add</button>
     </form>
