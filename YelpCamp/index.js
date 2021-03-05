@@ -9,7 +9,6 @@ const db = mongoose.connection;
 const Campground = require('./models/campground');
 const ExpressError = require('./utilities/ExpressError');
 const catchAsync = require('./utilities/catchAsync');
-const handleValidationErr = require('./utilities/handleValidationErr');
 
 mongoose.connect('mongodb://localhost:27017/yelp-camp', { useNewUrlParser: true, useUnifiedTopology: true })
 
@@ -71,13 +70,6 @@ app.delete('/campgrounds/:id', catchAsync(async (req, res) => {
 app.all('*', (req, res, next) => {
     next(new ExpressError('Page Not Found', 404));
 });
-
-app.use((err, req, res, next) => {
-    console.log(err.name);
-    //We can single out particular types of Mongoose Errors:
-    if (err.name === 'ValidationError') err = handleValidationErr(err);
-    next(err);
-})
 
 app.use((err, req, res, next) => {
     const { statusCode = 500 } = err;
