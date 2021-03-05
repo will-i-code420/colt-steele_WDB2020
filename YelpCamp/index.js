@@ -9,6 +9,7 @@ const db = mongoose.connection;
 const Campground = require('./models/campground');
 const ExpressError = require('./utilities/ExpressError');
 const catchAsync = require('./utilities/catchAsync');
+const handleValidationErr = require('./utilities/handleValidationErr');
 
 mongoose.connect('mongodb://localhost:27017/yelp-camp', { useNewUrlParser: true, useUnifiedTopology: true })
 
@@ -40,7 +41,6 @@ app.get('/campgrounds/new', (req, res) => {
 app.get('/campgrounds/:id', catchAsync(async (req, res) => {
     const {id} = req.params;
     const campground = await Campground.findById(id);
-    if (!campground) throw new ExpressError(4)
     res.render('campgrounds/details', {campground});
 }));
 
@@ -73,8 +73,15 @@ app.all('*', (req, res, next) => {
 });
 
 app.use((err, req, res, next) => {
+    console.log(err.name);
+    //We can single out particular types of Mongoose Errors:
+    if (err.name === 'ValidationError') err = handleValidationErr(err);
+    next(err);
+})
+
+app.use((err, req, res, next) => {
     const { statusCode = 500 } = err;
-    if (!err.message) err.message = 'Oh No, Something Went Wrong!';
+    if (!err.message) err.message = 'Oh No, Something Went Terribly Wrong!';
     res.status(statusCode).render('error', { err })
 });
 
