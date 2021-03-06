@@ -9,6 +9,8 @@ const db = mongoose.connection;
 const Campground = require('./models/campground');
 const ExpressError = require('./utilities/ExpressError');
 const catchAsync = require('./utilities/catchAsync');
+const { campgroundSchema } = require('./schemas');
+const mongooseValidations = require('./utilities/mongooseValidations');
 
 mongoose.connect('mongodb://localhost:27017/yelp-camp', { useNewUrlParser: true, useUnifiedTopology: true })
 
@@ -49,13 +51,13 @@ app.get('/campgrounds/:id/edit', catchAsync(async (req, res) => {
     res.render('campgrounds/edit', {campground});
 }));
 
-app.post('/new-campground', catchAsync(async (req, res) => {
+app.post('/new-campground', mongooseValidations, catchAsync(async (req, res) => {
     const campground = new Campground(req.body.campground);
     await campground.save();
     res.redirect(`/campgrounds/${campground._id}`);
 }));
 
-app.put('/campgrounds/:id', catchAsync(async (req, res) => {
+app.put('/campgrounds/:id', mongooseValidations, catchAsync(async (req, res) => {
     const {id} = req.params;
     const campground = await Campground.findByIdAndUpdate(id, {...req.body.campground}, {new: true, runValidators: true});
     res.redirect(`campgrounds/${campground._id}`);
