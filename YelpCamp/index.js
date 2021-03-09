@@ -7,6 +7,7 @@ const methodOverride = require('method-override');
 const mongoose = require('mongoose');
 const db = mongoose.connection;
 const Campground = require('./models/campground');
+const Review = require('./models/review');
 const ExpressError = require('./utilities/ExpressError');
 const catchAsync = require('./utilities/catchAsync');
 const mongooseValidations = require('./utilities/mongooseValidations');
@@ -50,8 +51,18 @@ app.get('/campgrounds/:id/edit', catchAsync(async (req, res) => {
     res.render('campgrounds/edit', {campground});
 }));
 
-app.post('/new-campground', mongooseValidations, catchAsync(async (req, res) => {
+app.post('/campgrounds', mongooseValidations, catchAsync(async (req, res) => {
     const campground = new Campground(req.body.campground);
+    await campground.save();
+    res.redirect(`/campgrounds/${campground._id}`);
+}));
+
+app.post('/campgrounds/:id/reviews', mongooseValidations, catchAsync(async (req, res) => {
+    const {id} = req.params;
+    const campground = await Campground.findById(id);
+    const review = new Review(req.body.review)
+    campground.reviews.push(review);
+    await review.save();
     await campground.save();
     res.redirect(`/campgrounds/${campground._id}`);
 }));
