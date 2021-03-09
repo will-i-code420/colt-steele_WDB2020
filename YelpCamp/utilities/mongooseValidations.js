@@ -1,3 +1,5 @@
+const { campgroundSchema } = require('../schemas');
+
 module.exports = function validateCampground(req, res, next) {
     const { error } = campgroundSchema.validate(req.body);
     if (error) {

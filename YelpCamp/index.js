@@ -9,10 +9,9 @@ const db = mongoose.connection;
 const Campground = require('./models/campground');
 const ExpressError = require('./utilities/ExpressError');
 const catchAsync = require('./utilities/catchAsync');
-const { campgroundSchema } = require('./schemas');
 const mongooseValidations = require('./utilities/mongooseValidations');
 
-mongoose.connect('mongodb://localhost:27017/yelp-camp', { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect('mongodb://localhost:27017/yelp-camp', { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false })
 
 db.on('error', console.error.bind(console, "db connection error"));
 db.once('open', () => {
@@ -47,7 +46,7 @@ app.get('/campgrounds/:id', catchAsync(async (req, res) => {
 
 app.get('/campgrounds/:id/edit', catchAsync(async (req, res) => {
     const {id} = req.params;
-    const campground = await Campground.findById({id});
+    const campground = await Campground.findById(id);
     res.render('campgrounds/edit', {campground});
 }));
 
@@ -59,8 +58,8 @@ app.post('/new-campground', mongooseValidations, catchAsync(async (req, res) => 
 
 app.put('/campgrounds/:id', mongooseValidations, catchAsync(async (req, res) => {
     const {id} = req.params;
-    const campground = await Campground.findByIdAndUpdate(id, {...req.body.campground}, {new: true, runValidators: true});
-    res.redirect(`campgrounds/${campground._id}`);
+    const campground = await Campground.findByIdAndUpdate(id, {...req.body.campground}, {new: true});
+    res.redirect(`/campgrounds/${campground._id}`);
 }));
 
 app.delete('/campgrounds/:id', catchAsync(async (req, res) => {
