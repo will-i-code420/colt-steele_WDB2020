@@ -5,6 +5,12 @@ const CampgroundSchema = new Schema({
     title: String,
     image: String,
     price: Number,
+    reviews: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: 'Review'
+        }
+    ],
     description: String,
     location: String
 })
