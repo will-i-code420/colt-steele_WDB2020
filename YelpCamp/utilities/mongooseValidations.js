@@ -1,6 +1,6 @@
 const { campgroundSchema, reviewSchema } = require('../schemas');
 
-module.exports = function validateCampground(req, res, next) {
+module.exports.validateCampground = (req, res, next) => {
     const { error } = campgroundSchema.validate(req.body);
     if (error) {
         const msg = error.details.map(el => el.message).join(',')
@@ -10,7 +10,7 @@ module.exports = function validateCampground(req, res, next) {
     }
 }
 
-module.exports = function validateReview(req, res, next) {
+module.exports.validateReview = (req, res, next) => {
     const { error } = reviewSchema.validate(req.body);
     if (error) {
         const msg = error.details.map(el => el.message).join(',')
