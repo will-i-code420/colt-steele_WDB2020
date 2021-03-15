@@ -4,7 +4,7 @@ const methodOverride = require('method-override');
 const Campground = require('../models/campground');
 const Review = require('../models/review');
 const catchAsync = require('../utilities/catchAsync');
-const { validateCampground, reviewSchema } = require('../utilities/mongooseValidations');
+const { validateCampground, validateReview } = require('../utilities/mongooseValidations');
 
 router.use(methodOverride('_method'));
 
@@ -35,7 +35,7 @@ router.post('/', validateCampground, catchAsync(async (req, res) => {
     res.redirect(`/campgrounds/${campground._id}`);
 }));
 
-router.post('/:id/reviews', reviewSchema, catchAsync(async (req, res) => {
+router.post('/:id/reviews', validateReview, catchAsync(async (req, res) => {
     const {id} = req.params;
     const campground = await Campground.findById(id);
     const review = new Review(req.body.review)
