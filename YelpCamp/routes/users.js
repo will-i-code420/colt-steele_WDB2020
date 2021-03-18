@@ -3,6 +3,8 @@ const passport = require('passport');
 const router = express.Router;
 const User = require('../models/user');
 const catchAsync = require('../utilities/catchAsync');
+const { validateUser } = require('../utilities/mongooseValidations');
+
 
 router.get('/register', (req, res) => {
     res.render('users/register');
@@ -12,7 +14,7 @@ router.get('/login', (req, res) => {
     res.render('users/login');
 });
 
-router.post('/register', catchAsync(async (req, res) => {
+router.post('/register', validateUser, catchAsync(async (req, res) => {
     const {username, email, password} = req.body.user;
     const user = new User({ email, username });
     try {
