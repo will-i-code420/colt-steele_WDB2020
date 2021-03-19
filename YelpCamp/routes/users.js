@@ -20,13 +20,16 @@ router.get('/logout', (req, res) => {
     res.redirect('/campgrounds')
 })
 
-router.post('/register', validateUser, catchAsync(async (req, res) => {
+router.post('/register', validateUser, catchAsync(async (req, res, next) => {
     const {username, email, password} = req.body.user;
     const user = new User({ email, username });
     try {
         const registered = await new User.register(user, password);
-        req.flash('success', 'Wecome to YelpCamp!!');
-        res.redirect('/campgrounds')
+        req.login(registered, err => {
+            if (err) return next(err)
+            req.flash('success', 'Wecome to YelpCamp!!');
+            res.redirect('/campgrounds');
+        })
     } catch (err) {
         req.flash('error', err.message);
         res.redirect('/register');
@@ -35,7 +38,9 @@ router.post('/register', validateUser, catchAsync(async (req, res) => {
 
 router.post('/login', passport.authenticate('local', {failureFlash: true, failureRedirect: '/login'}), (req, res) => {
     req.flash('success', 'Logged In');
-    res.redirect('/campgrounds');
+    const redirectUrl = req.session.redirectUrl || '/campgrounds';
+    delete req.session.redirectUrl;
+    res.redirect(redirectUrl);
 });
 
 module.exports = router;
