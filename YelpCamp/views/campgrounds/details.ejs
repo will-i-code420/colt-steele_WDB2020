@@ -16,10 +16,12 @@
                     <%= campground.description %>
                 </p>
                 <a href="/campgrounds">All Campgrounds</a>
-                <a href="/campgrounds/<%= campground._id %>/edit">Edit</a>
-                <form action="/campgrounds/<%= campground._id %>?_method=DELETE" method="POST">
-                    <button>DELETE</button>
-                </form>
+                <% if (user && campground.author.equals(user._id)) { %>
+                    <a href="/campgrounds/<%= campground._id %>/edit">Edit</a>
+                    <form action="/campgrounds/<%= campground._id %>?_method=DELETE" method="POST">
+                        <button>DELETE</button>
+                    </form>
+                <% } %>
             </div>
         </div>
     </div>
