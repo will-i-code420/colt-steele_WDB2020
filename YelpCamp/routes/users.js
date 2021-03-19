@@ -14,6 +14,12 @@ router.get('/login', (req, res) => {
     res.render('users/login');
 });
 
+router.get('/logout', (req, res) => {
+    req.logout();
+    req.flash('success', "Logged Out");
+    res.redirect('/campgrounds')
+})
+
 router.post('/register', validateUser, catchAsync(async (req, res) => {
     const {username, email, password} = req.body.user;
     const user = new User({ email, username });
