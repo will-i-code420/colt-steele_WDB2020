@@ -1,13 +1,13 @@
-<% layout('layouts/boilerplate')%
+<% layout('layouts/boilerplate')%>
 <h1>Login</h1>
     <form class="needs-validation" action="/login" method="POST" novalidate>
         <p>
             <label for="username" class="form-label">Username:</label>
-            <input type="text" id="username" class="form-control" name="user[username]" required>
+            <input type="text" id="username" class="form-control" name="username" required>
         </p>
         <p>
             <label for="password" class="form-label">Password: </label>
-            <input type="password" id="password" class="form-control" name="user[password]" required>
+            <input type="password" id="password" class="form-control" name="password" required>
         </p>
         <button class="btn btn-primary">Login</button>
     </form>

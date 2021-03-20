@@ -24,13 +24,14 @@ router.post('/register', validateUser, catchAsync(async (req, res, next) => {
     const {username, email, password} = req.body.user;
     const user = new User({ email, username });
     try {
-        const registered = await new User.register(user, password);
+        const registered = await User.register(user, password);
         req.login(registered, err => {
             if (err) return next(err)
             req.flash('success', 'Wecome to YelpCamp!!');
             res.redirect('/campgrounds');
         })
     } catch (err) {
+        console.log(err)
         req.flash('error', err.message);
         res.redirect('/register');
     }
