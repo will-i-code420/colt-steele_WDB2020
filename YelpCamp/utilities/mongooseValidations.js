@@ -3,7 +3,7 @@ const ExpressError = require('./ExpressError');
 
 module.exports = {
 
-    validateCampground: (req, res, next) => {
+    validateCampground (req, res, next) {
         const { error } = campgroundSchema.validate(req.body);
         if (error) {
             const msg = error.details.map(el => el.message).join(',')
@@ -13,7 +13,7 @@ module.exports = {
         }
     },
 
-    validateReview: (req, res, next) => {
+    validateReview (req, res, next) {
         const { error } = reviewSchema.validate(req.body);
         if (error) {
             const msg = error.details.map(el => el.message).join(',')
@@ -23,7 +23,7 @@ module.exports = {
         }
     },
 
-    validateUser: (req, res, next) => {
+    validateUser (req, res, next) {
         const { error } = userSchema.validate(req.body);
         if (error) {
             const msg = error.details.map(el => el.message).join(',')
