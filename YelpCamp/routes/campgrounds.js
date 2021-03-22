@@ -4,10 +4,14 @@ const catchAsync = require('../utilities/catchAsync');
 const { validateCampground } = require('../utilities/mongooseValidations');
 const { isLoggedIn, isCampgroundAuthor } = require('../middleware');
 const campgroundController = require('../controllers/campgrounds');
+const multer = require('multer');
+const {storage} = require('../utilities/cloudinary');
+const upload = multer({storage});
 
+// fix post route so validateCampground runs before multer
 router.route('/')
     .get(catchAsync(campgroundController.index))
-    .post(isLoggedIn, validateCampground, catchAsync(campgroundController.createCampground));
+    .post(isLoggedIn, upload.array('image'), validateCampground, catchAsync(campgroundController.createCampground));
 
 router.get('/new', isLoggedIn, campgroundController.renderNewForm);
 

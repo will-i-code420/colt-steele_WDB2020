@@ -1,6 +1,6 @@
 <% layout('layouts/boilerplate')%>
     <h1>Add New Campground</h1>
-    <form class="needs-validation" action="/campgrounds" method="POST" novalidate>
+    <form class="needs-validation" action="/campgrounds" method="POST" novalidate enctype="multipart/form-data">
         <p>
             <label for="title" class="form-label">Campground Name</label>
             <input type="text" id="title" class="form-control" name="campground[title]" required>
@@ -32,7 +32,8 @@
             </p>
         </p>
         <p>
-            <label for="image" class="form-label">Image URL</label>
+            <!--
+                <label for="image" class="form-label">Image URL</label>
             <input type="text" id="image" class="form-control" name="campground[image]" placeholder="https://www.unsplash.com" required>
             <p class="valid-feedback">
                 VALID CAMPGROUND IMAGE URL
@@ -40,6 +41,9 @@
             <p class="invalid-feedback">
                 INVALID CAMPGROUND IMAGE URL
             </p>
+            -->
+            <label class="form-label" for="image">Select Image(s)...</label>
+            <input class="form-control" type="file" name="image" id="image" multiple>
         </p>
         <p>
             <label for="description" class="form-label">Description</label>

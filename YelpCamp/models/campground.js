@@ -8,7 +8,12 @@ const CampgroundSchema = new Schema({
         ref: 'User'
     },
     title: String,
-    image: String,
+    images: [
+        {
+            url: String,
+            filename: String
+        }
+    ],
     price: Number,
     reviews: [
         {
