@@ -31,10 +31,6 @@
                 INVALID CAMPGROUND PRICE
             </p>
         </p>
-        <p class="input-group mb-3 custom-file">
-            <label class="input-group-text custom-file" for="image">Select Image(s)</label>
-            <input type="file" class="form-control" id="image" name="image" multiple>
-        </p>
         <p>
             <label for="description" class="form-label">Description</label>
             <textarea name="campground[description]" id="description" class="form-control" cols="30" rows="10" required></textarea>
@@ -44,6 +40,10 @@
             <p class="invalid-feedback">
                 INVALID CAMPGROUND DESCRIPTION
             </p>
+        </p>
+        <p class="input-group mb-3 custom-file">
+            <label class="input-group-text custom-file" for="image">Select Image(s)</label>
+            <input type="file" class="form-control" id="image" name="image" multiple>
         </p>
         <button class="btn btn-success">Add</button>
     </form>
