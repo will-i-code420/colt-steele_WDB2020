@@ -39,9 +39,13 @@ module.exports = {
         req.flash('success', 'Campground Created!');
         res.redirect(`/campgrounds/${campground._id}`);
     },
+    // update findByIdAndUpdate to work with images instead of doing double save
     async updateCampground (req, res) {
         const {id} = req.params;
         const campground = await Campground.findByIdAndUpdate(id, {...req.body.campground}, {new: true});
+        const imgs = campground.images = req.files.map(file => ({url: file.path, filename: file.filename}));
+        campground.images.push(...imgs);
+        await campground.save();
         req.flash('success', 'Campground Updated!');
         res.redirect(`/campgrounds/${campground._id}`);
     },

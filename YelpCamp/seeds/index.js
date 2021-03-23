@@ -22,9 +22,18 @@ const seedDB = async() => {
             author: '605564810ca2af202de4d0d1',
             location: `${cities[randomNum].city}, ${cities[randomNum].state}`,
             title: `${random(descriptors)} ${random(places)}`,
-            image: 'https://source.unsplash.com/collection/483251',
             description: 'blah blah blah',
-            price
+            price,
+            images: [
+                {
+                    url: '',
+                    filename: ''
+                },
+                {
+                    url: '',
+                    filename: ''
+                }
+            ]
         });
         await campground.save();
     }

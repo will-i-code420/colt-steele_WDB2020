@@ -14,10 +14,10 @@ router.route('/')
     .post(isLoggedIn, upload.array('image'), validateCampground, catchAsync(campgroundController.createCampground));
 
 router.get('/new', isLoggedIn, campgroundController.renderNewForm);
-
+// fix put route so validateCampground runs before multer
 router.route('/:id')
     .get(catchAsync(campgroundController.getDetails))
-    .put(isLoggedIn, isCampgroundAuthor, validateCampground, catchAsync(campgroundController.updateCampground))
+    .put(isLoggedIn, isCampgroundAuthor, upload.array('image'), validateCampground, catchAsync(campgroundController.updateCampground))
     .delete(isLoggedIn, isCampgroundAuthor, catchAsync(campgroundController.deleteCampground));
 
 router.get('/:id/edit', isLoggedIn, isCampgroundAuthor, catchAsync(campgroundController.renderEditForm));
