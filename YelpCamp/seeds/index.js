@@ -26,18 +26,20 @@ const seedDB = async() => {
             price,
             images: [
                 {
-                    url: '',
-                    filename: ''
+                    url: 'https://res.cloudinary.com/willicode/image/upload/v1616531906/YelpCamp/qm5ajtqkd94atey7cvgi.jpg',
+                    filename: 'YelpCamp/qm5ajtqkd94atey7cvgi'
                 },
                 {
-                    url: '',
-                    filename: ''
+                    url: 'https://res.cloudinary.com/willicode/image/upload/v1616531908/YelpCamp/wqvtu5xzkrsvljorlvhu.jpg',
+                    filename: 'YelpCamp/wqvtu5xzkrsvljorlvhu'
                 }
             ]
         });
         await campground.save();
     }
 }
+
+
 
 seedDB().then(() => {
     mongoose.connection.close();
