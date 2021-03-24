@@ -26,7 +26,18 @@ const CampgroundSchema = new Schema({
         }
     ],
     description: String,
-    location: String
+    location: String,
+    geometry: {
+        type: {
+            type: String,
+            enum: ['Point'],
+            required: true
+        },
+        coordinates: {
+            type: [Number],
+            required:  true
+        }
+    }
 });
 // add delete functions for images both in mongo and cloudinary
 CampgroundSchema.post('findOneAndDelete', async function(doc) {
