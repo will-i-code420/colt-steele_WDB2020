@@ -21,7 +21,7 @@
 
 <script>
   const mapboxToken = '<%-process.env.MAPBOX_TOKEN%>';
-  const campgrounds = <%- JSON.stringify(campgrounds) %>
+  const campgrounds = {features: <%- JSON.stringify(campgrounds) %>};
 </script>
 
 <script src="/js/clusterMap.js"></script>
