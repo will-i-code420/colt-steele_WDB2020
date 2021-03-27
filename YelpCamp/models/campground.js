@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const Review = require('./review');
 const Schema = mongoose.Schema;
+const options = {toJSON: {virtuals: true}};
 
 const ImageSchema = new Schema({
     url: String,
@@ -38,6 +39,11 @@ const CampgroundSchema = new Schema({
             required:  true
         }
     }
+}, options);
+
+CampgroundSchema.virtual('properties.popUpMarkup').get(function () {
+    return `<h3><a href="/campgrounds/${this._id}">${this.title}</a></h3>
+    <p>${this.description.substring(0,20)}</p>`
 });
 // add delete functions for images both in mongo and cloudinary
 CampgroundSchema.post('findOneAndDelete', async function(doc) {
