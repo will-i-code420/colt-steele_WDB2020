@@ -1,50 +1,60 @@
 <% layout('layouts/boilerplate')%>
-    <h1>Add New Campground</h1>
-    <form class="needs-validation" action="/campgrounds" method="POST" novalidate enctype="multipart/form-data">
-        <p>
-            <label for="title" class="form-label">Campground Name</label>
-            <input type="text" id="title" class="form-control" name="campground[title]" required>
-            <p class="valid-feedback">
-                VALID CAMPGROUND NAME
-            </p>
-            <p class="invalid-feedback">
-                INVALID CAMPGROUND NAME
-            </p>
-        </p>
-        <p>
-            <label for="location" class="form-label">Location</label>
-            <input type="text" id="location" class="form-control" name="campground[location]" placeholder="City, State" required>
-            <p class="valid-feedback">
-                VALID CAMPGROUND LOCATION
-            </p>
-            <p class="invalid-feedback">
-                INVALID CAMPGROUND LOCATION
-            </p>
-        </p>
-        <p>
-            <label for="price" class="form-label">Price Per Night</label>
-            <input type="text" id="price" class="form-control" name="campground[price]" placeholder="22.99" required>
-            <p class="valid-feedback">
-                VALID CAMPGROUND PRICE
-            </p>
-            <p class="invalid-feedback">
-                INVALID CAMPGROUND PRICE
-            </p>
-        </p>
-        <p>
-            <label for="description" class="form-label">Description</label>
-            <textarea name="campground[description]" id="description" class="form-control" cols="30" rows="10" required></textarea>
-            <p class="valid-feedback">
-                VALID CAMPGROUND DESCRIPTION
-            </p>
-            <p class="invalid-feedback">
-                INVALID CAMPGROUND DESCRIPTION
-            </p>
-        </p>
-        <p class="input-group mb-3 custom-file">
-            <label class="input-group-text custom-file" for="image">Select Image(s)</label>
-            <input type="file" class="form-control" id="image" name="image" multiple>
-        </p>
-        <button class="btn btn-success">Add</button>
-    </form>
-    <a class="btn btn-primary" href="/campgrounds">All Campgrounds</a>
+<div class="container row d-flex justify-content-center align-items-center my-5">
+    <div class="col-md-6 offset-md-3 col-xl-4 offset-xl-4">
+        <div class="card shadow">
+            <img src="https://images.unsplash.com/photo-1571863533956-01c88e79957e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1267&q=80"
+                    alt="pitched orange tent atop grassy mountain top" class="card-img-top img-fluid" />
+            <div class="card-body">
+                <h5 class="card-title">Add New Campground</h5>
+                <form class="needs-validation" action="/campgrounds" method="POST" novalidate enctype="multipart/form-data">
+                    <p class="my-3">
+                        <label for="title" class="form-label">Campground Name</label>
+                        <input type="text" id="title" class="form-control" name="campground[title]" autofocus required>
+                        <p class="valid-feedback">
+                            VALID CAMPGROUND NAME
+                        </p>
+                        <p class="invalid-feedback">
+                            INVALID CAMPGROUND NAME
+                        </p>
+                    </p>
+                    <p class="mb-3">
+                        <label for="location" class="form-label">Location</label>
+                        <input type="text" id="location" class="form-control" name="campground[location]" placeholder="City, State" required>
+                        <p class="valid-feedback">
+                            VALID CAMPGROUND LOCATION
+                        </p>
+                        <p class="invalid-feedback">
+                            INVALID CAMPGROUND LOCATION
+                        </p>
+                    </p>
+                    <p class="mb-3">
+                        <label for="price" class="form-label">Price Per Night</label>
+                        <input type="text" id="price" class="form-control" name="campground[price]" placeholder="22.99" required>
+                        <p class="valid-feedback">
+                            VALID CAMPGROUND PRICE
+                        </p>
+                        <p class="invalid-feedback">
+                            INVALID CAMPGROUND PRICE
+                        </p>
+                    </p>
+                    <p class="mb-3">
+                        <label for="description" class="form-label">Description</label>
+                        <textarea name="campground[description]" id="description" class="form-control" cols="30" rows="10" required></textarea>
+                        <p class="valid-feedback">
+                            VALID CAMPGROUND DESCRIPTION
+                        </p>
+                        <p class="invalid-feedback">
+                            INVALID CAMPGROUND DESCRIPTION
+                        </p>
+                    </p>
+                    <p class="input-group mb-3 custom-file">
+                        <label class="input-group-text custom-file" for="image">Select Image(s)</label>
+                        <input type="file" class="form-control" id="image" name="image" multiple>
+                    </p>
+                    <button class="btn btn-success btn-block mb-3">Add</button>
+                </form>
+                <a class="btn btn-primary" href="/campgrounds">All Campgrounds</a>
+            </div>
+        </div>
+    </div>
+</div>
