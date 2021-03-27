@@ -2,7 +2,7 @@
 <link rel="stylesheet" href="/stylesheets/starability-basic.css">
 
 <div class="row">
-    <div class="col-6 offset-1">
+    <div class="col-md-6 offset-md-1">
         <div id="campgroundCarousel" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner">
                 <% campground.images.forEach((img, i) => { %>
@@ -45,13 +45,13 @@
         </div>
     </div>
 </div>
-<div class="col-4 offset-1">
-    <div id='map' style='width: 100%; height: 300px;'></div>
-    <div class="mt-5">
+<div class="col-md-4 offset-md-1">
+    <div id='map' class="my-5"></div>
+    <div class="mb-3">
         <% if (user) { %>
             <h2>Leave A Review</h2>
             <form class="needs-validation" action="/campgrounds/<%= campground._id %>/reviews" method="POST" novalidate>
-                <fieldset class="starability-basic mb-3">
+                <fieldset class="starability-basic my-3">
                     <legend>Rating</legend>
                     <input type="radio" id="no-rate" class="input-no-rate" name="review[rating]" value="0" aria-label="No rating." />
                     <input type="radio" id="first-rate1" name="review[rating]" value="1" checked />
@@ -65,7 +65,7 @@
                     <input type="radio" id="first-rate5" name="review[rating]" value="5" />
                     <label for="first-rate5" title="Amazing">5 stars</label>
                   </fieldset>
-                <p>
+                <p class="mb-3">
                     <label class="form-label" for="body">Review</label>
                     <textarea class="form-control" name="review[body]" id="body" cols="30" rows="3" required></textarea>
                     <p class="valid-feedback">
@@ -75,7 +75,7 @@
                         REVIEW REQUIRED
                     </p>
                 </p>
-                <button class="btn btn-success">Submit Review</button>
+                <button class="btn btn-success btn-block mb-3">Submit Review</button>
             </form>
         <% } %>
         <% for( let review of campground.reviews ) { %>
