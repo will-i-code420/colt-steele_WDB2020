@@ -20,15 +20,18 @@ const passport = require('passport');
 const localStrategy = require('passport-local');
 const User = require('./models/user');
 const mongoSanitize = require('express-mongo-sanitize');
+const helmet = require("helmet");
 
 mongoose.connect('mongodb://localhost:27017/yelp-camp', { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false, useCreateIndex: true })
 
 const sessionConfig = {
-    secret: 'secret',
+    name: 'cheese',
+    secret: process.env.COOKIE_SECRET,
     resave: false,
     saveUninitialized: true,
     cookie: {
         httpOnly: true,
+        //secure: process.env.NODE_ENV !== 'production' : false ; true,
         expires: Date.now() + 1000 * 60 * 60 * 24 * 7,
         maxAge: 1000 * 60 * 60 * 24 * 7
     }
@@ -51,6 +54,7 @@ app.use(flash());
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(mongoSanitize());
+app.use(helmet());
 
 passport.use(new localStrategy(User.authenticate()));
 
